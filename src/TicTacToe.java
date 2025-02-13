@@ -8,8 +8,8 @@ public class TicTacToe {
     }
 
     public void play(int row, int col) {
-        if(board[row][col] != 0) {
-            System.out.println("Cell already occupied");
+        if(row > 2 || row < 0 || col > 2 || col < 0 || board[row][col] != 0) {
+            System.out.println("Invalid input, try again");
             return;
         } else {
             board[row][col] = currentPlayer;
@@ -39,21 +39,21 @@ public class TicTacToe {
         // check rows
         for(int i = 0; i < 3; i++) {
             if(board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != 0) {
-                return currentPlayer;
+                return currentPlayer%2 + 1;
             }
         }
         // check columns
         for(int i = 0; i < 3; i++) {
             if(board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != 0) {
-                return currentPlayer;
+                return currentPlayer%2 + 1;
             }
         }
         // check diagonals
         if(board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != 0) {
-            return currentPlayer;
+            return currentPlayer%2 + 1;
         }
         if(board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != 0) {
-            return currentPlayer;
+            return currentPlayer%2 + 1;
         }
         return 0;
     }
